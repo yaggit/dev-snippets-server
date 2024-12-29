@@ -33,10 +33,7 @@ The Dev Snippets Server is a backend service designed to manage code snippets th
 
 ### Running the Server
 
-To start the development server navigate to:
-```sh
-package.json
-```
+To start the development server navigate to: `package.json` file and edit the scripts.
 
 
 
