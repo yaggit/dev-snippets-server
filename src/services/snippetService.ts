@@ -29,7 +29,6 @@ export const SnippetService = {
 
   async getSnippetByUser(userId: any) {
     try {
-      console.log('userId:', userId);
       const snippets = await Snippet.findAll({
         where: { userId },
       })

@@ -7,13 +7,26 @@ import { snippetRoutes } from './routes/snippetRoutes';
 import { authRoutes } from './routes/authRoutes';
 import { userRoutes } from './routes/userRoutes';
 import { errorHandler } from './middlewares/errorMiddleware';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: process.env.REACT_APP_URL,
+    credentials: true,
+}));
 app.use(express.json());
+app.use(cookieParser());
+
+app.use((req, res, next) => {
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+    if (Object.keys(req.body).length) {
+      console.log("Body:", req.body);
+    }
+    next();
+  });
 
 // Routes
 app.use('/api/snippets', snippetRoutes);

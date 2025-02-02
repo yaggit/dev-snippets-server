@@ -13,6 +13,9 @@ class Snippet extends Model {
   public userId!: number;
   public createdAt!: Date;
   public updatedAt!: Date;
+  public deletedAt!: Date;
+  public installation!: string;
+  public version!: string;
 }
 
 Snippet.init(
@@ -45,6 +48,14 @@ Snippet.init(
         model: User,
         key: 'id',
       },
+    },
+    installation: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    version: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
   },
   {

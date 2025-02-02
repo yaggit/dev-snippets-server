@@ -17,7 +17,7 @@ export const signupService = async (userData: { username: string; email: string;
   const newUser = await User.create({ username, email, passwordHash: hashedPassword });
 
   const token = generateToken(newUser.id);
-  return { user: newUser, token };
+  return { user: newUser };
 };
 
 // Login service
@@ -35,7 +35,7 @@ export const loginService = async (loginData: { email: string; password: string 
   }
 
   const token = generateToken(user.id);
-  return { token };
+  return user;
 };
 
 export const refreshTokenService = async (refreshToken: string) => {
